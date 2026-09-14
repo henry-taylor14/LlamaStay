@@ -1,0 +1,20 @@
+{
+  "name": "llamastay",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A shearing record book for llamas",
+  "workspaces": [
+    "frontend"
+  ],
+  "scripts": {
+    "dev": "concurrently --kill-others-on-fail -n api,web -c blue,green \"npm:dev:api\" \"npm:dev:web\"",
+    "dev:api": "cd backend && go run . serve",
+    "dev:web": "npm run dev -w frontend",
+    "seed": "cd backend && go run . seed",
+    "smoke": "node frontend/smoke.mjs",
+    "build": "npm run build -w frontend && cd backend && go build ./..."
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0"
+  }
+}

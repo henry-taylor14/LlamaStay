@@ -1,0 +1,34 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-go@v6
+        with:
+          go-version: '1.27'
+          cache-dependency-path: backend/go.sum
+
+      - name: Build the API
+        working-directory: backend
+        run: go build ./...
+
+      - name: Vet the API
+        working-directory: backend
+        run: go vet ./...
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: '22'
+          cache: npm
+
+      - run: npm ci
+
+      - name: Build the web app
+        run: npm run build -w frontend
