@@ -1,0 +1,167 @@
+/* Fiber Ledger — tokens and type transcribed from lookbook.html, direction 1. */
+@import url("https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@400;600;700&family=Public+Sans:wght@400;500;600&display=swap");
+
+:root{
+  --paper:#EAE2D0;
+  --paper-line:#C9BFA8;
+  --ink:#1F2A38;
+  --wool:#8B6F4E;
+  --stamp:#C08A28;
+  --overdue:#A23E2C;
+
+  --serif:"Zilla Slab", Georgia, serif;
+  --sans:"Public Sans", system-ui, sans-serif;
+}
+
+*{box-sizing:border-box;}
+html{color-scheme:light;}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--sans);
+  -webkit-font-smoothing:antialiased;
+}
+
+:focus-visible{outline:2px solid var(--ink);outline-offset:2px;}
+
+.ledger-page{
+  max-width:1100px;
+  margin-inline:auto;
+  padding-inline:clamp(16px,4vw,48px);
+  padding-block:28px 64px;
+}
+
+/* ---------- masthead ---------- */
+.ledger-head{
+  display:flex;justify-content:space-between;align-items:flex-end;
+  border-bottom:2px solid var(--ink);
+  padding-bottom:14px;margin-bottom:22px;flex-wrap:wrap;gap:10px;
+}
+.ledger-brand{
+  font-family:var(--serif);font-weight:700;font-size:1.6rem;
+  letter-spacing:-0.01em;color:var(--ink);text-decoration:none;
+}
+.ledger-brand span{color:var(--wool);}
+
+/* ---------- buttons ---------- */
+.ledger-add{
+  font-family:var(--sans);font-weight:600;font-size:0.85rem;
+  border:1px solid var(--ink);padding:7px 12px;
+  background:transparent;color:var(--ink);cursor:pointer;
+}
+.ledger-add:hover{background:var(--ink);color:var(--paper);}
+.ledger-add.is-quiet{border-color:var(--paper-line);color:var(--wool);}
+.ledger-add.is-quiet:hover{background:transparent;border-color:var(--ink);color:var(--ink);}
+
+/* ---------- table ---------- */
+.ledger-table-wrap{overflow-x:auto;}
+table.ledger-table{
+  width:100%;border-collapse:collapse;min-width:640px;
+  font-variant-numeric:tabular-nums;
+}
+.ledger-table thead th{
+  text-align:left;font-weight:600;font-size:0.78rem;color:var(--wool);
+  border-bottom:1px solid var(--ink);padding:0 10px 8px;
+}
+.ledger-table thead th.num,.ledger-table td.num{text-align:right;}
+.ledger-table tbody td{
+  border-bottom:1px solid var(--paper-line);
+  padding:12px 10px;font-family:var(--serif);font-size:0.98rem;
+}
+.ledger-table tbody td.name{font-weight:600;}
+.ledger-table tbody td.entry{font-family:var(--sans);color:var(--wool);font-size:0.85rem;}
+.ledger-table tbody tr:hover{background:rgba(31,42,56,0.05);}
+.ledger-name-link{
+  background:none;border:none;padding:0;font:inherit;color:inherit;
+  cursor:pointer;text-align:left;
+}
+.ledger-name-link:hover{text-decoration:underline;}
+
+.ledger-swatch{display:inline-flex;align-items:center;gap:8px;}
+.ledger-swatch svg{width:16px;height:16px;flex:none;}
+
+.ledger-actions{display:flex;gap:14px;font-family:var(--sans);font-size:0.82rem;}
+.ledger-actions button{
+  background:none;border:none;padding:0;color:var(--ink);
+  text-decoration:underline;cursor:pointer;font:inherit;
+}
+.ledger-actions button:hover{color:var(--wool);}
+
+.ledger-stamp{
+  display:inline-block;border:2px solid var(--overdue);color:var(--overdue);
+  font-family:var(--serif);font-weight:700;font-size:0.68rem;
+  padding:1px 6px;transform:rotate(-6deg);border-radius:2px;margin-left:8px;
+}
+.ledger-stamp.is-note{border-color:var(--stamp);color:var(--stamp);}
+
+/* ---------- record detail ---------- */
+.ledger-detail{
+  margin-top:36px;border-top:1px solid var(--ink);padding-top:22px;
+  display:grid;grid-template-columns:auto 1fr;gap:22px;align-items:start;
+}
+.ledger-detail > svg{width:84px;height:84px;flex:none;}
+.ledger-detail-name{font-family:var(--serif);font-weight:700;font-size:1.5rem;margin:0 0 4px;}
+.ledger-detail-no{color:var(--wool);font-size:0.8rem;margin:0 0 14px;}
+.ledger-fields{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px 24px;max-width:560px;margin:0;}
+.ledger-field dt{font-size:0.72rem;color:var(--wool);margin:0 0 2px;}
+.ledger-field dd{font-family:var(--serif);font-size:1.05rem;margin:0;}
+.ledger-detail-foot{margin-top:24px;display:flex;gap:12px;flex-wrap:wrap;}
+
+/* ---------- entry form: ruled lines, not boxes ---------- */
+.ledger-form{max-width:560px;}
+.ledger-form-title{font-family:var(--serif);font-weight:700;font-size:1.3rem;margin:0 0 2px;}
+.ledger-form-note{color:var(--wool);font-size:0.8rem;margin:0 0 22px;}
+.ledger-entry{display:grid;gap:18px;margin-bottom:26px;}
+.ledger-entry label{display:block;font-size:0.72rem;color:var(--wool);margin-bottom:4px;}
+.ledger-entry input,.ledger-entry select{
+  width:100%;background:transparent;border:none;
+  border-bottom:1px solid var(--paper-line);
+  font-family:var(--serif);font-size:1.05rem;color:var(--ink);
+  padding:4px 0 6px;border-radius:0;
+}
+.ledger-entry input:focus,.ledger-entry select:focus{
+  outline:none;border-bottom-color:var(--ink);border-bottom-width:2px;padding-bottom:5px;
+}
+.ledger-entry select{appearance:none;cursor:pointer;}
+.ledger-entry .has-error input,.ledger-entry .has-error select{border-bottom-color:var(--overdue);}
+.ledger-error{display:block;color:var(--overdue);font-family:var(--sans);font-size:0.75rem;margin-top:4px;}
+.ledger-required{color:var(--wool);}
+.ledger-form-actions{display:flex;gap:12px;flex-wrap:wrap;}
+
+/* ---------- empty state ---------- */
+.ledger-empty{
+  border-bottom:1px solid var(--paper-line);
+  padding:44px 10px;text-align:center;color:var(--wool);
+}
+.ledger-empty p{font-family:var(--serif);font-size:1.05rem;color:var(--ink);margin:0 0 6px;}
+.ledger-empty span{font-size:0.85rem;}
+
+/* ---------- slip dialog ---------- */
+.ledger-slip{
+  border:2px solid var(--ink);background:var(--paper);color:var(--ink);
+  padding:24px clamp(18px,4vw,32px);max-width:600px;width:calc(100% - 32px);
+}
+.ledger-slip::backdrop{background:rgba(31,42,56,0.45);}
+
+/* ---------- stamped notices ---------- */
+.ledger-notice{
+  border:2px solid var(--stamp);color:var(--stamp);background:var(--paper);
+  font-family:var(--serif);font-weight:700;font-size:0.85rem;
+  padding:6px 14px;border-radius:2px;transform:rotate(-1.5deg);
+}
+.ledger-notice.is-error{border-color:var(--overdue);color:var(--overdue);}
+
+.visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
+
+/* ---------- not found ---------- */
+.ledger-missing{padding-block:56px;max-width:46ch;}
+.ledger-missing h1{font-family:var(--serif);font-weight:700;font-size:1.5rem;margin:0 0 8px;}
+.ledger-missing p{color:var(--wool);line-height:1.55;margin:0 0 20px;}
+
+@media (max-width:560px){
+  .ledger-detail{grid-template-columns:1fr;}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none !important;transition:none !important;}
+}
