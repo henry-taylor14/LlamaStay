@@ -1,0 +1,16 @@
+# macOS
+.DS_Store
+
+# Node
+node_modules/
+dist/
+
+# PocketBase runtime data (database, uploads, logs)
+backend/pb_data/
+
+# Go build output
+backend/llamastay
+
+# Local env overrides
+.env.local
+.env.*.local
