@@ -25,8 +25,9 @@ var samples = []sample{
 	{"Inca", "Black", 74, 290},
 	{"Pip", "Gray", 456, 410},
 	{"Saffron", "Yellow", 127, 220},
-	{"Clementine", "Orange", 409, 500},
-	{"Indigo", "Blue", 13, 180},
+	{"Clemen Tina", "Orange", 409, 500},
+	{"Indi Go", "Blue", 13, 180},
+	{"Chippy Dip", "Green", 13, 180},
 }
 
 func registerSeedCommand(app *pocketbase.PocketBase) {
